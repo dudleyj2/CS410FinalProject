@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Commands &#8212; reddit_recommender_bot 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Description" href="project-description.html" />
+    <link rel="prev" title="Getting started" href="getting-started.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="project-description.html" title="Project Description"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting-started.html" title="Getting started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="commands">
+<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+<p>The Makefile contains the central entry points for common tasks related to this project.</p>
+<div class="section" id="create-environment">
+<h2>Create Environment<a class="headerlink" href="#create-environment" title="Permalink to this headline">¶</a></h2>
+<p><cite>make create_environment</cite> will create the virtual environment for the project.</p>
+<p>If you have Conda installed, it will attempt to use that.</p>
+<p>Otherwise, it will use virtualenv.</p>
+<p>The name of the virutal environment is set to the PROJECT_NAME as defined in
+the Makefile.  Change there if necessary.</p>
+<p>After you have executed this command, do the following to enter, exit and remove
+the virtual environment.</p>
+<p>If Conda:</p>
+<ul class="simple">
+<li><p>Enter the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda activate reddit_recommender_bot
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Exit the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span>$ conda deactivate
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Delete the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm -rf <span class="si">${</span><span class="nv">CONDA_HOME</span><span class="si">}</span>/envs/reddit_recommender_bot
+</pre></div>
+</div>
+<p>If virtualenv:</p>
+<ul class="simple">
+<li><p>Enter the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> <span class="sb">`</span>which virtualenvwrapper.sh<span class="sb">`</span>
+$ <span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.virtualenvs
+$ workon reddit_recommender_bot
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Exit the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span>$ deactivate
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Delete the virtual environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm -rf <span class="si">${</span><span class="nv">WORKON_HOME</span><span class="si">}</span>/reddit_recommender_bot
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-requirements">
+<h2>Install Requirements<a class="headerlink" href="#install-requirements" title="Permalink to this headline">¶</a></h2>
+<p><cite>make requirements</cite> will add to the virtual environment
+the necessary modules for the project.</p>
+<p><strong>NOTE: Be certain to be in the virtual environment for this step!</strong></p>
+<p>Do this in order to be able to create documentation via Sphinx
+or to be able to view and work with the Jupyter notebooks.</p>
+</div>
+<div class="section" id="create-or-update-documentation">
+<h2>Create or Update Documentation<a class="headerlink" href="#create-or-update-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is written in RST and transformed to HTML.</p>
+<p>To create or to update the documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ <span class="nb">cd</span> doc_source
+<span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ make html
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Commands</a><ul>
+<li><a class="reference internal" href="#create-environment">Create Environment</a></li>
+<li><a class="reference internal" href="#install-requirements">Install Requirements</a></li>
+<li><a class="reference internal" href="#create-or-update-documentation">Create or Update Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting-started.html"
+                        title="previous chapter">Getting started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="project-description.html"
+                        title="next chapter">Project Description</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/commands.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="project-description.html" title="Project Description"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting-started.html" title="Getting started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.
+    </div>
+  </body>
+</html>

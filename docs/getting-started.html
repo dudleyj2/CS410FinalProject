@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting started &#8212; reddit_recommender_bot 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Commands" href="commands.html" />
+    <link rel="prev" title="Reddit Discussion Recommender Bot documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="commands.html" title="Commands"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Reddit Discussion Recommender Bot documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This project has been built using a cookiecutter template.</p>
+<p>It assumes the use of a virutal environment in order to load
+the required modules for the project without altering your
+standard configuration.</p>
+<p>Python 3 is assumed.  If you are not using Conda, then
+virualenv is required.  It will be loaded automatically via
+the make command to create the environment.</p>
+<p>So… make is also required.</p>
+<div class="section" id="view-the-documentation">
+<h2>View the Documentation<a class="headerlink" href="#view-the-documentation" title="Permalink to this headline">¶</a></h2>
+<p>To view the documentation</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ <span class="nb">cd</span> docs
+<span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ python -m http.server
+</pre></div>
+</div>
+<p>Or, alternatively, just browse to <a class="reference external" href="file:///PROJECT_HOME/docs">file:///PROJECT_HOME/docs</a>.</p>
+</div>
+<div class="section" id="access-the-jupyter-notebooks">
+<h2>Access the Jupyter Notebooks<a class="headerlink" href="#access-the-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>There is something a bit strange about jupyter, ipython and virtual
+environments.  In order to be able to <em>use</em> these notebooks, it’s important
+to set the “kernel” of the notebook to the virtual environment.  To do this,
+you have to set the virtual environment as one of the available kernels.</p>
+<p>As shown, execute these commands <em>from</em> the virtual environment.  Furthermore,
+ensure you’ve already executed either “make requirements” or “make data”.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ python -m ipykernel install --user --name reddit_recommender_bot --display-name reddit_recommender_bot
+<span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ jupyter-notebook
+</pre></div>
+</div>
+<p>Then from within Jupyter select the notebooks folder.</p>
+<p>When done, to remove the kernel:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ jupyter kernelspec remove reddit_recommender_bot
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
+<p>The Reddit Recommender Bot is a reddit bot.</p>
+<p>In order to execute the recommender system, a bot is required.</p>
+<p>Values in the src/config.py has to updated with below credentials;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">username</span>    <span class="o">=</span> <span class="s1">&#39;SecureCondorBot&#39;</span>
+<span class="nv">password</span>    <span class="o">=</span> <span class="s1">&#39;YearlyCosmicMoth&#39;</span>
+<span class="nv">client_id</span>   <span class="o">=</span> <span class="s1">&#39;Zl5AadA6rXrZJQ&#39;</span>
+<span class="nv">client_secret</span> <span class="o">=</span> <span class="s1">&#39;LBxuCo8ofvoP4JLZi-WBn-BPON0&#39;</span>
+<span class="nv">user_agent</span> <span class="o">=</span> <span class="s1">&#39;Secure Condor Bot (a16b) v0&#39;</span>
+<span class="nv">indexdir</span> <span class="o">=</span> <span class="s1">&#39;data/processed&#39;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>If you already have a reddit account, a recommendation request can be done by entering below 3 simple steps;</dt><dd><ol class="arabic simple">
+<li><p>Open a reddit post</p></li>
+<li><p>Type the summon request as a direct comment to the post or as a reply to an existing comment.</p></li>
+</ol>
+</dd>
+</dl>
+<p>In order to request a recommendation, a Reddit login is required.</p>
+<p>If you do not have a reddit account you can create a new one by;
+go to <a class="reference external" href="https://www.reddit.com/">https://www.reddit.com/</a> and clicking on Signup button.</p>
+</div>
+<div class="section" id="execution">
+<h2>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h2>
+<p>The execution of the recommender requires two ongoing processes.</p>
+<p>The first process ingests the data and prepares it for analysis.</p>
+<p>The second watches for requests and processes a query.</p>
+<p>First, start the indexer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ python src/indexer.py
+</pre></div>
+</div>
+<p>Next, start the watcher:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>reddit_recommender_bot<span class="o">)</span> $ python src/watcher.py
+</pre></div>
+</div>
+<p>It migh ask you to install psaw, whoosh and pandas libraries manually (If makefile had failed to install them).
+You can use below commands to do that;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install psaw
+pip install whoosh
+pip install pandas
+</pre></div>
+</div>
+<p>It’s prudent to wait a few minutes for the indexer to ingest a sufficient number of comments.</p>
+<p>Then, to initiate a query, access Reddit.
+These credentials can be used to test this bot instead of your own reddit account;</p>
+<blockquote>
+<div><p>username: CondorBotTest</p>
+<p>password: SecureCondorBotTest</p>
+</div></blockquote>
+<p>Navigate to an interesting discussion.  Then post a reply including the bot name as shown:</p>
+<blockquote>
+<div><p>/u/SecureCondorBot</p>
+</div></blockquote>
+<p>The watcher will capture the request and after a couple minutes, respond with a recommendation.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting started</a><ul>
+<li><a class="reference internal" href="#view-the-documentation">View the Documentation</a></li>
+<li><a class="reference internal" href="#access-the-jupyter-notebooks">Access the Jupyter Notebooks</a></li>
+<li><a class="reference internal" href="#preparation">Preparation</a></li>
+<li><a class="reference internal" href="#execution">Execution</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Reddit Discussion Recommender Bot documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="commands.html"
+                        title="next chapter">Commands</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/getting-started.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="commands.html" title="Commands"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Reddit Discussion Recommender Bot documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Project Description &#8212; reddit_recommender_bot 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Progress Notes" href="progress.html" />
+    <link rel="prev" title="Commands" href="commands.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="progress.html" title="Progress Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="commands.html" title="Commands"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="project-description">
+<h1>Project Description<a class="headerlink" href="#project-description" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt>This section will serve to document how things work:</dt><dd><ul class="simple">
+<li><p>Assumptions</p></li>
+<li><p>General Data Flow</p></li>
+<li><p>General architecture of files and directories</p></li>
+<li><p>General architecture of scripts</p></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Current version of recommender request does not work when the request is made by the same person who created the post.</p></li>
+<li><p>The Bot will not work if the post has been deleted/archived concurrently right after you entered the request.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="data-flow">
+<h2>Data Flow<a class="headerlink" href="#data-flow" title="Permalink to this headline">¶</a></h2>
+<p><strong>Indexer</strong></p>
+<p>An inverted index is used to build the logic to scoring and recommending sub reddits.
+Whoosh, psaw and pushshift.io have been used to build up the logic.</p>
+<p>Whoosh is a pure Python search engine library which contains more sophisticated helper functions for a ranking system.Â  It defaults to Okapi BM 25.
+It supports gradual, continual, updates, etc.Â  Furthermore, it allows to store things with the inverted index as well as index multiple â€œfieldsâ€ of a document.</p>
+<p>Using psaw and pushshift.io created another benefit or option.Â  Rather than starting with nothing and building the inverted index as new comments roll on in, psaw.pushshift.io created the option to specify a start time in the recent past.Â  The indexer will then start pulling in all the comments from that moment in time.</p>
+<p><strong>Watcher</strong></p>
+<p>The main process of Watcher is eatch/track mentions in realtime. Basically, we used reddit inbox as the storage for recommondation requests and we query the user mentions received to the inbox.is reading the user mentions of the reddit box.</p>
+<p><strong>Responder</strong></p>
+<p>Responder processes the request and responds with the proper sub reddit recommendation. It first use the inverted index and okapai BM25 to score the document and and then select the top 10% of the ranked subreddits. The ranking logic is applied to this selected set of subreddits.
+Main steps of Responder logic:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use the inverted index and Okapi BM25 to score the documents</p></li>
+<li><p>Select the top 10%</p></li>
+<li><p>Group by submission</p></li>
+<li><p>Take the harmonic mean within each submission</p></li>
+<li><p>Multiply by the log of the count of matched documents per submission</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>For the most part, this project follows the data-science cookiecutter template.</p>
+<p>data</p>
+<p>Datasets of various formats.</p>
+<p>models</p>
+<p>Models, outputs, summaries, etc.</p>
+<p>src</p>
+<p>The programs or scripts</p>
+<p>src/data</p>
+<p>Scripts to generate or transform data.</p>
+<p>src/data/data.ini</p>
+<p>A config file that specifies the datasets from the Chicago Data Portal.</p>
+<p>src/features</p>
+<p>Scripts to do feature engineering, etc.</p>
+<p>src/models</p>
+<p>Scripts to do modeling.</p>
+<p>tests</p>
+<p>Scripts for pytest.</p>
+</div>
+<div class="section" id="program-script-structure">
+<h2>Program/Script Structure<a class="headerlink" href="#program-script-structure" title="Permalink to this headline">¶</a></h2>
+<p>Each python script in this project may be accessed by others
+via import or called directly from the command line.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Description</a><ul>
+<li><a class="reference internal" href="#assumptions">Assumptions</a></li>
+<li><a class="reference internal" href="#data-flow">Data Flow</a></li>
+<li><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
+<li><a class="reference internal" href="#program-script-structure">Program/Script Structure</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="commands.html"
+                        title="previous chapter">Commands</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="progress.html"
+                        title="next chapter">Progress Notes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/project-description.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="progress.html" title="Progress Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="commands.html" title="Commands"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reddit_recommender_bot 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.2.
+    </div>
+  </body>
+</html>
